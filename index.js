@@ -82,6 +82,11 @@ const carrito = []
 const productosCarrito = document.querySelector(".table tbody")
 
 let precioTotal = document.querySelector(".precioTotal")
+let badgeCarrito = document.querySelector(".carrito__contador")
+
+let btnAgregarCarrito = document.querySelectorAll(".boton-agregar")
+
+console.log(btnAgregarCarrito)
 //selecciono donde poner los productos en la tabla
 
 function agregarAlCarrito(itemId) {
@@ -92,12 +97,17 @@ function agregarAlCarrito(itemId) {
         itemCarrito.cantidad += 1
     } else {
         let {id, marca, modelo, precio} = stockProductos.find( el=> el.id == itemId)
-        carrito.push({id: id, marca, modelo, precio, cantidad: 1}) 
+        carrito.push({id, marca, modelo, precio, cantidad: 1}) 
     }
 
     actualizarCarrito()
 
+    btnAgregarCarrito.forEach(btn => {
+        btn.className = "btn btn-danger boton-agregar"
+    });
+
 }
+
 
 function actualizarCarrito() {
     productosCarrito.innerHTML=``
@@ -109,13 +119,13 @@ function actualizarCarrito() {
         tr.innerHTML = `<th>${producto.cantidad}</th>
                     <td>${producto.marca}</td>
                     <td>${producto.modelo}</td>
-                    <td>${producto.precio}</td>
+                    <td>${producto.precio * producto.cantidad}</td>
                     <td><button onclick=eliminarDelCarrito(${producto.id}) type="button" class="btn-close" aria-label="Close"></button></td>
                     `
         productosCarrito.appendChild(tr)
     })
 
-   /*  contadorCarrito.innerText = productosCarrito.length */
+    badgeCarrito.innerText = carrito.length
     precioTotal.innerText = carrito.reduce( (acc, el) => acc + (el.precio * el.cantidad), 0)
 }  // reduce: recorre el array que se llama, genera un calculo y lo reduce a un valor. 
 
@@ -124,13 +134,16 @@ function actualizarCarrito() {
 
 function eliminarDelCarrito(itemId) {
 
-    let itemCarrito = carrito.find(el => el.id ==itemId)
+    let productoEliminar = carrito.find(el => el.id ==itemId)
 
-    if(itemCarrito.cantidad == 0) {
-        carrito.remove(itemCarrito)
-    } else {
-        itemCarrito.cantidad--
+    productoEliminar.cantidad--
+
+    if(productoEliminar.cantidad == 0) {
+        let indice = carrito.indexOf(productoEliminar)
+        carrito.splice(indice, 1)
     }
+    
+    actualizarCarrito()
     
 }
 

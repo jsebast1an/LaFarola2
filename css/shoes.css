@@ -87,11 +87,13 @@ body { font-family: 'Julius Sans One', sans-serif;
                 justify-content: center;
                 align-items: center;}
 
-.modalCarrito { height: auto ;
+.modalCarrito { max-height: 500px;
+                min-width: 320px;
                 padding: 15px;
                 background-color: white;
                 border-radius: 10px;
                 overflow-y: scroll;
+
                 display: flex;
                 flex-direction: column;}
 

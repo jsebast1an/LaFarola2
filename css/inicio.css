@@ -1,0 +1,302 @@
+* {margin: 0;
+    padding: 0;}
+
+body {font-family: 'Julius Sans One', sans-serif;
+    font-weight: 600;
+    text-align: justify;
+    background-color: white;}
+
+/* - - - - - --  HEADER  - - - - -  */
+.header {grid-area: header;
+    text-shadow: rgb(199, 195, 195) 10px 5px 2px;}
+
+.header__navbar {position: relative;}
+
+.header__navbarmenu {display: flexbox;
+                    justify-content: flex-end;
+                    padding-top: 50px;
+                    padding-bottom: 15px;}
+
+.header__navitem {padding: 0px 10px;}
+
+/* INDEX GRID */
+
+.index-contenedor {margin:0px auto;
+    display: grid;
+    grid-gap: 0px 0px;
+    grid-template-columns: repeat(1fr);
+    grid-template-rows: repeat(6, auto);
+    
+    grid-template-areas:"header"
+                        "aside"
+                        "main"
+                        "h4"
+                        "article1"
+                        "footer"
+}  
+/* MAIN */
+
+.index-contenedor .main {grid-area: main;}
+
+.index-contenedor .main__descripcion {padding: 20px 10%;
+    background-color: black;
+    color: white;
+    margin-bottom: 0px;
+    font-size: 18px;
+    text-align: center;}
+
+
+/* - - - - - - - ASIDE  -- - - -  */
+
+.index-contenedor .aside {grid-area:aside;}
+
+.aside__carousel {width: 600px}
+    
+/* ---- TITULO H4 -----*/
+.index-contenedor .h4__titulo {grid-area: h4;
+    font-weight: 900;
+    margin-bottom: 0px;
+    color: rgb(68, 58, 58);
+    text-align: center;
+    font-variant: small-caps;
+    letter-spacing: 4px;
+    padding: 20px 10%;
+    font-size:30px;
+    font-family: 'Roboto Slab', serif;
+    background: rgb(225,223,224);
+    background: linear-gradient(0deg, rgba(225,223,224,1) 77%, rgba(224,224,222,1) 100%);}
+    
+/* -- - - - --  ARTICLE 1 - - - - - */
+.index-contenedor .article1 {grid-area: article1;
+    background-image: url(../imgs/offwhitefondo.jpg);
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;}
+
+
+
+    @mixin cardsSizes ($position, $width, $height, $hidden, $radioBorder){
+        position:absolute;
+        width:100%;
+        height: 100%;
+        backface-visibility: hidden;
+        border-radius: 10px;
+    }
+    
+    @mixin fondosImg ($imageBg, $positionBg, $sizeBg){
+        background-image:url();
+        background-position: center;
+        background-size: $sizeBg;
+    }
+    
+    /* CARDS ARTICLE 1*/
+    
+    /* card 1 */
+    .article1__cardpadre {position: relative;
+                        width: 250px;
+                        height: 320px;
+                        margin: 30px 100px;}
+    
+    .article1__card {position: absolute;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: all 0.5s ease;}
+    .article1__card:hover {transform: rotateY(180deg);}
+    
+    .article1__cardfront1 {
+        position:absolute;
+        width:100%;
+        height: 100%;
+        backface-visibility: hidden;
+        border-radius: 10px;
+        background-image:url(../imgs/fondocard.jpg);
+        background-position: center;
+        background-size: cover;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;}
+    .article1__cardtitle--front {background: rgba(0, 0, 0, 0.8);
+                                padding: 5px;}
+    
+                                
+    /* ANIMACION CARDTITLE */
+    @keyframes multicolor1 {
+        0%{color:rgb(255, 179, 0);}
+        25%{color:rgb(102, 255, 0)}
+        50%{color: rgb(0, 225, 255);}
+        75%{color:rgb(0, 119, 255)}
+        100%{color:rgb(238, 255, 0)}
+        }
+    .article1__cardtitle--front {animation-name: multicolor1;
+                                animation-iteration-count: infinite;
+                                animation-duration: 2s;
+                                animation-delay: 0s;}
+    
+    
+    .article1__cardback1 {
+        position:absolute;
+        width:100%;
+        height: 100%;
+        backface-visibility: hidden;
+        border-radius: 10px;
+        background-image:url(../imgs/vipmember.jpg);
+        background-position: center;
+        background-size: cover;
+    
+    transform: rotateY(180deg);
+    display: flex;
+    justify-content: center;
+    align-items: center;}
+    
+    .article1__cardtitle--back {color:rgb(255, 255, 255)}
+    /* card 2 */
+    
+    .article1__cardfront2 {
+        position:absolute;
+        width:100%;
+        height: 100%;
+        backface-visibility: hidden;
+        border-radius: 10px;
+        background-image:url(../imgs/fondocard2.jpg);
+        background-position: center;
+        background-size: cover;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;}
+    
+    .article1__cardback2 {
+        position:absolute;
+        width:100%;
+        height: 100%;
+        backface-visibility: hidden;
+        border-radius: 10px;
+        background-image:url(../imgs/goldmember.jpg);
+        background-position: center;
+        background-size: cover;
+    
+    transform: rotateY(180deg);
+    display: flex;
+    justify-content: center;
+    align-items: center;}
+    
+    /* card 3 */
+    
+    .article1__cardfront3 {
+        position:absolute;
+        width:100%;
+        height: 100%;
+        backface-visibility: hidden;
+        border-radius: 10px;
+        background-image:url(../imgs/hoddieAB.jpg);
+        background-position: center;
+        background-size: cover;}
+    
+    .article1__cardback3 {
+        position:absolute;
+        width:100%;
+        height: 100%;
+        backface-visibility: hidden;
+        border-radius: 10px;
+        background-image:url(../imgs/tablaHoodie.jpg);
+        background-position: center;
+        background-size: cover;
+    
+    transform: rotateY(180deg);}
+    
+    
+    /* card 4 */
+    .article1__cardfront4 {
+        position:absolute;
+        width:100%;
+        height: 100%;
+        backface-visibility: hidden;
+        border-radius: 10px;
+        background-image:url(../imgs/remeraAB.jpg);
+        background-position: center;
+        background-size: cover;}
+    
+    .article1__cardback4 {
+        position:absolute;
+        width:100%;
+        height: 100%;
+        backface-visibility: hidden;
+        border-radius: 10px;
+        background-image:url(../imgs/tablaRemera.jpg);
+        background-position: center;
+        background-size: cover;
+    
+    transform: rotateY(180deg);}
+
+
+
+
+    /* ----FOOTER----- */
+    
+footer {grid-area: footer}
+
+footer {font-size: 14px;
+        color: beige;
+        width: 100%;
+        padding: 0px 10px;
+        background-color: #071454;
+        background-image: linear-gradient(225deg, #071454 0%, #42093e 46%, #2f2207 100%);}
+.footer__container {display:flex;
+                    flex-wrap:wrap;
+                    justify-content: space-around;
+                    max-width: 1200px        }
+
+.footer__box {display: flex;
+            flex-direction: column;
+            padding: 30px;}
+        h3 {font-weight: bold;
+            font-size: 12px;;}
+
+.footer__terminos {max-width: 350px;
+                margin-top: 20px;
+                font-weight: 700;
+                font-size: 12px;
+                color: rgb(175, 167, 167);}
+
+.footer__box a {text-decoration: none;
+                color: rgb(175, 167, 167);}
+
+.footer__copyright {text-align: center;
+                    color: rgb(175, 167, 167);}
+
+/* ----- CARRITO DE COMPRAS ------ */
+.modal-container {width: 100%;
+    height: 100vh;
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.3);
+    visibility: hidden;
+    opacity: 0;
+    transition: all .5 ease-in;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;}
+
+.modalCarrito { max-height: 500px ;
+    padding: 15px;
+    background-color: white;
+    border-radius: 10px;
+    overflow-y: scroll;
+
+    display: flex;
+    flex-direction: column;}
+
+.modal-active {opacity: 1;
+visibility: visible;}
+
+
+.modalCarrito__bodyProductos--table {font-size: 14px;}
+
+.modalCarrito__footer {display: flex;
+        align-items: flex-end;
+        flex-direction: column;}
