@@ -18,6 +18,3 @@ let stockProductos = [
  
 
 
-const ProductosCarrito = document.querySelector(".modalCarrito__bodyProductos")
-
-

@@ -75,22 +75,6 @@ body {font-family: 'Julius Sans One', sans-serif;
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;}
-
-
-
-    @mixin cardsSizes ($position, $width, $height, $hidden, $radioBorder){
-        position:absolute;
-        width:100%;
-        height: 100%;
-        backface-visibility: hidden;
-        border-radius: 10px;
-    }
-    
-    @mixin fondosImg ($imageBg, $positionBg, $sizeBg){
-        background-image:url();
-        background-position: center;
-        background-size: $sizeBg;
-    }
     
     /* CARDS ARTICLE 1*/
     

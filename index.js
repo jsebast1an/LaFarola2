@@ -26,13 +26,16 @@ function mostrarProductos(array) {
         div3.innerHTML = `
         <p>${producto.marca} </p>
         <p>${producto.modelo}</p>
-        <p class='precioProducto'>Precio: ${producto.precio}</p>  
-        <button onclick=agregarAlCarrito(${producto.id}) class='boton-agregar btn btn-success'>Agregar al carrito</button>
+        <p class='precioProducto'>Precio: ${producto.precio}</p>
+        <div class='btnContainer'>  
+        <button onclick=agregarAlCarrito(${producto.id}) id=${producto.id} class='boton-agregar btn btn-success'>Agregar al carrito</button>
+        </div>
         `   //aprovecho pasarle el evento al producto, es más eficiente.
                 
         div2.appendChild(div3)
     });
 }
+
 
 
 //      FILTRADO MEDIANTE SELECT
@@ -49,7 +52,8 @@ function filtrar() {     // usar selectPrenda.value te da el valor del atributo 
     if (valorFiltroPrenda == "todo") { //se define que sucederá con cada value
         arrayFiltrado = stockProductos
     } else {//se define el arrayfiltrado sera igual a la prenda seleccionada por el valorFiltroPrenda, que esto es igual al select Original.
-        arrayFiltrado = stockProductos.filter( elemento => elemento.prenda == valorFiltroPrenda) 
+        arrayFiltrado = stockProductos.filter( elemento => elemento.prenda == valorFiltroPrenda)
+
     }
 
     mostrarProductos(arrayFiltrado) //se ejecuta mostrarProductos pero con el array filtrado
@@ -84,9 +88,8 @@ const productosCarrito = document.querySelector(".table tbody")
 let precioTotal = document.querySelector(".precioTotal")
 let badgeCarrito = document.querySelector(".carrito__contador")
 
-let btnAgregarCarrito = document.querySelectorAll(".boton-agregar")
-
-console.log(btnAgregarCarrito)
+$(".boton-agregar")
+console.log($(".boton-agregar"))
 //selecciono donde poner los productos en la tabla
 
 function agregarAlCarrito(itemId) {
@@ -97,16 +100,22 @@ function agregarAlCarrito(itemId) {
         itemCarrito.cantidad += 1
     } else {
         let {id, marca, modelo, precio} = stockProductos.find( el=> el.id == itemId)
-        carrito.push({id, marca, modelo, precio, cantidad: 1}) 
+        carrito.push({id, marca, modelo, precio, cantidad: 1})
     }
+    
+    $(".header").append(`<div class='alert alert-success alert-dismissible fade show' role='alert'>
+                            <svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-bag-check-fill' viewBox='0 0 16 16'>
+                            <path fill-rule='evenodd' d='M10.5 3.5a2.5 2.5 0 0 0-5 0V4h5v-.5zm1 0V4H15v10a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V4h3.5v-.5a3.5 3.5 0 1 1 7 0zm-.646 5.354a.5.5 0 0 0-.708-.708L7.5 10.793 6.354 9.646a.5.5 0 1 0-.708.708l1.5 1.5a.5.5 0 0 0 .708 0l3-3z'/>
+                            </svg>
+                            PRODUCTO AGREGADO AL CARRITO CON EXITO!
+                            <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+                        </div>`);
 
-    actualizarCarrito()
-
-    btnAgregarCarrito.forEach(btn => {
-        btn.className = "btn btn-danger boton-agregar"
-    });
-
+    actualizarCarrito();
 }
+
+
+
 
 
 function actualizarCarrito() {
@@ -143,10 +152,11 @@ function eliminarDelCarrito(itemId) {
         carrito.splice(indice, 1)
     }
     
-    actualizarCarrito()
+    actualizarCarrito();
     
 }
 
+$(document).ready( () => {console.log("document listo")})
 
 
 /* CONTADOR SIMPLE */
