@@ -1,3 +1,7 @@
+$(document).ready(
+    console.log("Listo para ejecutar!")
+)
+
 $(".main__formulario form").append(`<button type='button' class='btn btn-primary btn-enviar'>Enviar</button>`)
 $(".btn-enviar").click(() => {
     $(".header").append(`<div class='alert alert-warning alert-dismissible fade show' role='alert'>

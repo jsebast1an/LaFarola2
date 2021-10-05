@@ -1,6 +1,9 @@
 
 /* PROYECTO FAROLA */
 
+$(document).ready(
+    console.log("Listo para ejecutar!"))
+
 //     MOSTRAR TODOS LOS PRODUCTOS DISPONIBLES
 
 const containerProductos = document.querySelector(".article__container")
