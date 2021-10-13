@@ -114,7 +114,11 @@ function agregarAlCarrito(itemId) {
                             <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
                         </div>`);
 
+    localStorage.setItem("carrito", json.stingify(carrito))
+
     actualizarCarrito();
+
+
 }
 
 
