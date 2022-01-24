@@ -2,7 +2,7 @@ Prototipo de sitio web para: La Farola, tienda de ropa - Streetwear Unisex Const
 
 LIBRERÍA: BOOTSTRAP
 
-PAGES: 5 
+PAGINAS: 3
 
 INICIO:FUNCIONAL 
 
