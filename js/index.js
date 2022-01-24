@@ -114,7 +114,6 @@ function agregarAlCarrito(itemId) {
                             <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
                         </div>`);
 
-    localStorage.setItem("carrito", json.stingify(carrito))
 
     actualizarCarrito();
 
@@ -150,7 +149,7 @@ function actualizarCarrito() {
 
 function eliminarDelCarrito(itemId) {
 
-    let productoEliminar = carrito.find(el => el.id ==itemId)
+    let productoEliminar = carrito.find(el => el.id == itemId)
 
     productoEliminar.cantidad--
 
